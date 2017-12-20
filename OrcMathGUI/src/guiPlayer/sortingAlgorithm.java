@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Component;
 
-public class SortingAlgorithm extends Component
+public class sortingAlgorithm extends Component
 {
 
 	private String name;
@@ -14,7 +14,7 @@ public class SortingAlgorithm extends Component
 	private String type;
 	private int price;
 	
-	public SortingAlgorithm(String name, String complexity, String type, int price) 
+	public sortingAlgorithm(String name, String complexity, String type, int price) 
 	{
 		super(40, 40, 30, 30);
 		this.name = name;

@@ -1,0 +1,7 @@
+name,complexity,type,price
+Stooge Sort,n^2.7,anything,1
+Bubble Sort,n^2,anything,10
+Insertion Sort,n^2,anything,100
+Radix LSD,n * (k/d),integer/string,1000
+Burstsort,n * (k/d),string,1500
+Spaghetti Sort,n,integer/string,1000000
