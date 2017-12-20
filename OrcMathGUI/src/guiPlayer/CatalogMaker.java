@@ -16,7 +16,7 @@ public class CatalogMaker {
 
 	public CatalogMaker() {
 		//instantiate the catalog
-		catalogue = new ArrayList<SortingAlgorithm>();
+		ArrayList<SortingAlgorithm> catalogue = new ArrayList<SortingAlgorithm>();
 		catalogue.add(new SortingAlgorithm("Stooge Sort", "n^2.7", "anything", 1));
 		catalogue.add(new SortingAlgorithm("Bubble Sort", "n^2", "anything", 10));
 		catalogue.add(new SortingAlgorithm("Insertion Sort", "n^2", "anything", 100));
