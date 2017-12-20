@@ -16,7 +16,13 @@ public class CatalogMaker {
 
 	public CatalogMaker() {
 		//instantiate the catalog
-		catalog = new ArrayList<Book>();
+		catalogue = new ArrayList<SortingAlgorithm>();
+		catalogue.add(new SortingAlgorithm("Stooge Sort", "n^2.7", "anything", 1));
+		catalogue.add(new SortingAlgorithm("Bubble Sort", "n^2", "anything", 10));
+		catalogue.add(new SortingAlgorithm("Insertion Sort", "n^2", "anything", 100));
+		catalogue.add(new SortingAlgorithm("Radix LSD", "n * (k/d)", "integer/string", 1000));
+		catalogue.add(new SortingAlgorithm("Burstsort", "n * (k/d)", "string", 1500));
+		catalogue.add(new SortingAlgorithm("Spaghetti Sort", "n", "integer/string", 1000000));
 	}
 
 	public static void main(String[] args){
