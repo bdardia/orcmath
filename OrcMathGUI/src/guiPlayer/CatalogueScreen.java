@@ -3,7 +3,6 @@ package guiPlayer;
 import java.util.List;
 
 import guiTeacher.components.Action;
-import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextArea;
 import guiTeacher.components.TextField;
