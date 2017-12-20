@@ -1,3 +1,5 @@
+package guiPlayer;
+
 import guiTeacher.GUIApplication;
 
 
@@ -21,7 +23,7 @@ public class Sampler extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		SampleScreen s = new SampleScreen(getWidth(), getHeight());
+		CatalogueScreen s = new CatalogueScreen(getWidth(), getHeight());
 		setScreen(s);
 	}
 }
