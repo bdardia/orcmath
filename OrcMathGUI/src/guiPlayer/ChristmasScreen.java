@@ -26,7 +26,9 @@ public class ChristmasScreen extends FullFunctionScreen
 	{
 		text = new TextArea(0, 20, 200, 40, "you have a cake");
 		viewObjects.add(text);
-		nextButton = new Button(40, 40, 200, 50, "view cake", new Action() {
+		text = new TextArea(0, 60, 500, 40, "click on the box to view the cake");
+		viewObjects.add(text);
+		nextButton = new Button(40, 100, 300, 215, "", new Action() {
 			
 			@Override
 			public void act() 
@@ -36,8 +38,11 @@ public class ChristmasScreen extends FullFunctionScreen
 		});
 		viewObjects.add(nextButton);
 		
-		image = new Graphic(40, 90, 0.25, "resources/cake.jpg");
+		image = new Graphic(40, 100, 0.25, "resources/cake.jpg");
 		viewObjects.add(image);
+		
+		text = new TextArea(0, 300, 200, 40, "happy holidays");
+		viewObjects.add(text);
 	}
 
 }

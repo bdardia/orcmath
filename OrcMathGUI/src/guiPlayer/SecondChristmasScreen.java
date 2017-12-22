@@ -14,6 +14,7 @@ public class SecondChristmasScreen extends FullFunctionScreen
 
 	private TextArea text;
 	private Graphic image;
+	private Button backButton;
 	
 	public SecondChristmasScreen(int width, int height) {
 		super(width, height);
@@ -28,6 +29,16 @@ public class SecondChristmasScreen extends FullFunctionScreen
 		
 		image = new Graphic(0, 0, "resources/tree.jpg");
 		viewObjects.add(image);
+		
+		backButton = new Button(0, 0, getWidth(), getHeight(), "", new Action() {
+			
+			@Override
+			public void act() 
+			{
+				Sampler.sample.setScreen(Sampler.mainScreen);
+			}
+		});
+		viewObjects.add(backButton);
 	}
 
 }
