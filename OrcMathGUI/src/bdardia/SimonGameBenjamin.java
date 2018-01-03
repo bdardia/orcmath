@@ -4,7 +4,7 @@ import guiTeacher.GUIApplication;
 
 public class SimonGameBenjamin extends GUIApplication 
 {
-	private SimonScreenBenjamin simonScreen;
+	private static SimonScreenBenjamin simonScreen;
 	
 	public SimonGameBenjamin(int width, int height)
 	{
@@ -15,7 +15,8 @@ public class SimonGameBenjamin extends GUIApplication
 	@Override
 	public void initScreen()
 	{
-		
+		SimonGameBenjamin.simonScreen = new SimonScreenBenjamin(getWidth(), getHeight());
+		setScreen(simonScreen);
 	}
 
 }

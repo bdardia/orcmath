@@ -1,5 +1,6 @@
 package bdardia;
 
-public interface MoveInterfaceBenjamin {
-
+public interface MoveInterfaceBenjamin 
+{
+	public ButtonInterfaceBenjamin getButton();
 }
