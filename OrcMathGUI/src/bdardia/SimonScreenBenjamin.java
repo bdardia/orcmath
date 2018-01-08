@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
@@ -21,7 +22,10 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 	private static int lastButton = 0;
 	private static Color[] colors;
 	private static Color currentColor;
-	
+	private Button b1;
+	private Button b2;
+	private Button b3;
+	private Button b4;
 	public SimonScreenBenjamin(int width, int height) 
 	{
 		super(width, height);
@@ -96,11 +100,14 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 	{
 		roundNumber = 0;
 		lastButton = -1;
-		addButtons();
-		for (ButtonInterfaceBenjamin b: buttons)
-		{
-			viewObjects.add(b);
-		}
+		b1 = new Button(20,150,40,40,"",new Action() {
+			
+			@Override
+			public void act() {
+				
+			}
+		});
+		
 		buttonList = new ArrayList<MoveInterfaceBenjamin>();
 		addRandomMoves(2);
 		roundText = new TextLabel(100, 200, 250, 50, "Round: " + roundNumber);
@@ -179,20 +186,8 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 		
 	}
 
-	public void addButtons()
-	{
-		int numberOfButtons = 4;
-		ButtonInterfaceBenjamin b = getAButton();
-		for (int i = 0; i < numberOfButtons; i += 1)
-		{
-			buttons[i] = b;
-		}
-	}
 	
-	private ButtonInterfaceBenjamin getAButton() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	private MoveInterfaceBenjamin getMove(int index) 
 	{
