@@ -14,11 +14,13 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 	private static ProgressInterfaceBenjamin progress;
 	private static ArrayList<MoveInterfaceBenjamin> buttonList;
 	private static int roundNumber;
+	private static int sequenceIndex = 0;
 	private static boolean userInput;
 	private static TextLabel roundText;
 	private static ButtonInterfaceBenjamin[] buttons;
 	private static int lastButton = 0;
 	private static Color[] colors;
+	private static Color currentColor;
 	
 	public SimonScreenBenjamin(int width, int height) 
 	{
@@ -30,14 +32,71 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 	@Override
 	public void run() 
 	{
-		
+		roundText.setText("");
+		nextRound();
 	}
 
+	public void nextRound()
+	{
+		userInput = false;
+		roundNumber += 1;
+		addRandomMoves(1);
+		progress.setRound(roundNumber);
+		progress.setSequenceSize(buttonList.size());
+		changeText("Simon's turn");
+		playSequence();
+		changeText("Your turn");
+		userInput = true;
+		sequenceIndex = 0;
+	}
+
+	public void changeText(String input)
+	{
+		Thread thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				roundText.setText(input);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		thread.start();
+		roundText.setText("");
+	}
+	
+	public void playSequence()
+	{
+		ButtonInterfaceBenjamin newButton = null;
+		for (MoveInterfaceBenjamin m: buttonList)
+		{
+			if (newButton != null)
+			{
+				newButton.setColor(getBackground().darker());
+				newButton = m.getButton();
+				newButton.setColor(getBackground().brighter());
+				int sleepTime = ((-roundNumber * 100) + 500);
+				try {
+					Thread.sleep(sleepTime);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		newButton.setColor(getBackground().darker());
+	}
+	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects)
 	{
 		roundNumber = 0;
 		lastButton = -1;
+		addButtons();
 		for (ButtonInterfaceBenjamin b: buttons)
 		{
 			viewObjects.add(b);
@@ -77,7 +136,19 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 							}
 						});
 						flash.start();
-						if (currentButton == buttonList.get(currentIndex).getButton());
+						if (currentButton == buttonList.get(sequenceIndex).getButton())
+						{
+							sequenceIndex += 1;
+						}
+						else
+						{
+							progress.gameOver();
+						}
+						if (sequenceIndex == buttonList.size())
+						{
+							Thread nextRound = new Thread(SimonScreenBenjamin.this);
+							nextRound.start();
+						}
 					}
 					
 				}
@@ -108,9 +179,28 @@ public class SimonScreenBenjamin extends ClickableScreen implements Runnable
 		
 	}
 
+	public void addButtons()
+	{
+		int numberOfButtons = 4;
+		ButtonInterfaceBenjamin b = getAButton();
+		for (int i = 0; i < numberOfButtons; i += 1)
+		{
+			buttons[i] = b;
+		}
+	}
+	
+	private ButtonInterfaceBenjamin getAButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private MoveInterfaceBenjamin getMove(int index) 
 	{
 		return null;
 	}
 
+	private ProgressInterfaceBenjamin getProgress()
+	{
+		return null;
+	}
 }
